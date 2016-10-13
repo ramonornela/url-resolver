@@ -1,6 +1,5 @@
 import { Metadata } from './metadata/metadata-abstract';
 import { Injectable } from '@angular/core';
-import { isBlank, isArray } from 'ionic-angular/util/util';
 
 @Injectable()
 export class Resolve {
@@ -93,13 +92,13 @@ export class Resolve {
   private setDefaultValue(paramsIds: any, param: string, params: Object): void {
     let defaultValue;
 
-    if (isBlank(paramsIds[param])) {
+    if (paramsIds[param] === null || paramsIds[param] === undefined) {
       throw 'Parametro ' + param + ' inexistente';
     }
 
     defaultValue = paramsIds[param].default;
 
-    if (isBlank(params[param])) {
+    if (params[param] === null || params[param] === undefined) {
       params[param] = defaultValue;
     }
   }
@@ -108,7 +107,7 @@ export class Resolve {
 
     let require, type;
 
-    if (isBlank(paramsIds[param])) {
+    if (paramsIds[param] === null || paramsIds[param] === undefined) {
       throw 'Parametro inexistente.';
     }
 
@@ -122,7 +121,7 @@ export class Resolve {
     // valida parametro requerido
     require = paramsIds[param].required || false;
     if (require) {
-      if (isBlank(params[param])) {
+      if (params[param] === null || params[param] === undefined) {
         throw 'Parametro ' + param + ' é requerido.';
       }
     }
@@ -136,7 +135,7 @@ export class Resolve {
             throw 'Parametro deve seguir o padrão ' + validation;
           }
           break;
-        case isArray(validation):
+        case Array.isArray(validation):
           if (validation.indexOf(params[param]) === -1) {
             throw 'Parametro deve  ser (' + validation.join(',') + ')';
           }

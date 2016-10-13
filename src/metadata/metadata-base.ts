@@ -1,6 +1,5 @@
 import { HTTP_METHODS, Params } from './data-type';
 import { Metadata } from './metadata-abstract';
-import { isUndefined, isPresent, isBlank } from 'ionic-angular/util/util';
 
 const KEY_DEFINE = '__defines__';
 
@@ -13,7 +12,7 @@ export abstract class MetadataBase implements Metadata {
   protected _get(id: string): any {
     let allData = this.getData();
 
-    if (isUndefined(allData[id])) {
+    if (allData[id] === undefined) {
       throw 'Identificador inexistente no arquivo de rota';
     }
 
@@ -24,7 +23,7 @@ export abstract class MetadataBase implements Metadata {
 
     let allData = this.getData();
 
-    if (isUndefined(allData[id].method)) {
+    if (allData[id].method === undefined) {
       return 'GET';
     }
 
@@ -63,13 +62,13 @@ export abstract class MetadataBase implements Metadata {
 
   protected mergeDefines(data: Object, key: string): any {
 
-    if (isBlank(data[key])) {
+    if (data[key] === null || data[key] === undefined) {
       data[key] = {};
     }
 
     let defines = this.getDefine(key);
     for (let index in defines) {
-      if (isBlank(data[key][index])) {
+      if (data[key][index] === null || data[key][index] === undefined) {
         data[key][index] = defines[index];
       }
     }
@@ -80,7 +79,8 @@ export abstract class MetadataBase implements Metadata {
   protected getDefine(key: string) {
     let data = this.getData();
 
-    if (isPresent(data[KEY_DEFINE]) && isPresent(data[KEY_DEFINE])) {
+    if ((data[KEY_DEFINE] !== null && data[KEY_DEFINE] !== undefined) && 
+        (data[KEY_DEFINE][key] !== null && data[KEY_DEFINE][key] !== undefined)) {
       return data[KEY_DEFINE][key];
     }
 
