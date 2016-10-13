@@ -13,6 +13,7 @@
 npm-*
 
 node_modules/
+dist/
 *.swp
 .DS_Store
 Thumbs.db
