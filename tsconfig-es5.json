@@ -2,9 +2,17 @@
   "compilerOptions": {
     "module": "es2015",
     "target": "es5",
+    "experimentalDecorators": true,
     "sourceMap": true,
     "declaration": true,
     "outDir": "dist/es5",
-    "moduleResolution": "node"
-  }
+    "moduleResolution": "node",
+    "lib": [
+      "es2015"
+    ]
+  },
+  "include": [
+    "src/**/*",
+    "node_modules/@angular/**/*"
+  ]
 }

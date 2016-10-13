@@ -150,7 +150,7 @@ export class RequestFactory {
     let search = new URLSearchParams('');
     for (let param in params) {
       // @todo implementar append
-      if (isObject(params[param])) {
+      if (typeof params[param] === 'object') {
         search.set(param, JSON.stringify(params[param]));
       } else {
         search.set(param, params[param]);
