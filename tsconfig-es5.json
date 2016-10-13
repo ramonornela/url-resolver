@@ -6,7 +6,5 @@
     "declaration": true,
     "outDir": "dist/es5",
     "moduleResolution": "node"
-  },
-  "files": [
-  ]
+  }
 }

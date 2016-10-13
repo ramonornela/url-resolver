@@ -2,8 +2,8 @@
   "name": "@mba/urlresolver",
   "version": "0.0.1",
   "description": "",
-  "main": "dist/index.js",
-  "typings": "dist/index.d.ts",
+  "main": "dist/es5/index.js",
+  "typings": "dist/es5/index.d.ts",
   "scripts": {
     "build:js": "tsc -p tsconfig-es5.json"
   },
