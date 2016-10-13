@@ -3,7 +3,6 @@ import { BrowserXhr, Request, Headers, URLSearchParams } from '@angular/http';
 import { JsonMetadata } from './metadata/json';
 import { MockMedata } from './metadata/mock';
 import { Metadata } from './metadata/metadata-abstract';
-import { isObject, isString, isPresent } from 'ionic-angular/util/util';
 import { Resolve } from './resolve';
 
 /**
@@ -30,7 +29,7 @@ export function factoryMetadata(data: string): Array<Provider> {
   let provide, useValue;
 
   switch (true) {
-    case isString(data) && data.indexOf('.json') !== -1:
+    case typeof data === 'string' && data.indexOf('.json') !== -1:
       provide = {
         provide: MockMedata,
         useFactory: (xhr: BrowserXhr, zone: NgZone) => new JsonMetadata(data, xhr, zone),
@@ -38,7 +37,7 @@ export function factoryMetadata(data: string): Array<Provider> {
       };
       useValue = JsonMetadata;
       break;
-    case isObject(data):
+    case typeof data === 'object':
       provide = {provide: MockMedata, useFactory: () => new MockMedata(data)};
       useValue = MockMedata;
       break;
@@ -87,7 +86,7 @@ export class RequestFactory {
   createRequest(id: string, params?: Object, headers?: {[key: string]: any}, body?: any): Request {
     // merge headers
     let headersDefault = this._resolve.getMetadata().getHeaders(id);
-    if (isPresent(headers)) {
+    if (typeof headers === 'object') {
       for (let index in headers) {
         headersDefault[index] = headers[index];
       }
