@@ -1,0 +1,22 @@
+{
+  "name": "@mba/urlresolver",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "scripts": {
+    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bluebile/mba-urlresolver.git"
+  },
+  "keywords": [
+    "url"
+  ],
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bluebile/mba-urlresolver/issues"
+  },
+  "homepage": "https://github.com/bluebile/mba-urlresolver#readme"
+}
