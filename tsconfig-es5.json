@@ -5,10 +5,12 @@
     "experimentalDecorators": true,
     "sourceMap": true,
     "declaration": true,
+    "removeComments": true,
     "outDir": "dist/es5",
     "moduleResolution": "node",
     "lib": [
-      "es2015"
+      "es2015",
+      "dom"
     ]
   },
   "include": [
