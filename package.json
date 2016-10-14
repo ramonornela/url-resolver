@@ -19,7 +19,13 @@
     "url": "git+https://github.com/bluebile/mba-urlresolver.git"
   },
   "keywords": [
-    "url"
+    "ionic",
+    "angular",
+    "url",
+    "http",
+    "headers",
+    "get",
+    "post"
   ],
   "author": "",
   "license": "MIT",
