@@ -2,7 +2,7 @@ import { MetadataBase } from './metadata-base';
 import { Injectable } from '@angular/core';
 
 @Injectable()
-export class MockMedata extends MetadataBase {
+export class MockMetadata extends MetadataBase {
 
   constructor(mockData: Object) {
     super();

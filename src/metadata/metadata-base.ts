@@ -1,5 +1,5 @@
 import { HTTP_METHODS, Params } from './data-type';
-import { Metadata } from './metadata-abstract';
+import { Metadata } from './metadata';
 
 const KEY_DEFINE = '__defines__';
 

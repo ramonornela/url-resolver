@@ -1,4 +1,4 @@
-import { Metadata } from './metadata/metadata-abstract';
+import { Metadata } from './metadata/metadata';
 import { Injectable } from '@angular/core';
 
 @Injectable()

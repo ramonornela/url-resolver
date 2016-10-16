@@ -1,55 +1,6 @@
-import { NgZone, Provider, Injectable } from '@angular/core';
-import { BrowserXhr, Request, Headers, URLSearchParams } from '@angular/http';
-import { JsonMetadata } from './metadata/json';
-import { MockMedata } from './metadata/mock';
-import { Metadata } from './metadata/metadata-abstract';
+import { Injectable } from '@angular/core';
+import { Request, Headers, URLSearchParams } from '@angular/http';
 import { Resolve } from './resolve';
-
-/**
- * Cria o objeto Metadata de acordo com o dado informado no primeiro argumento,
- * se for string este cria um JsonMetadata, se for Objeto cria um MockMetadata
- *
- * @usage
- * ```ts
- * import { Component } from '@angular/core';
- *
- * @Component({
- *   template: '<ion-nav  #content swipeBackEnabled="true"></ion-nav>',
- *   providers: [factoryMetadata('assets/routes/dev.json')]
- * })
- * export class MyApp {
- * }
- * ```
- *
- * @param {Object|string} data
- * @return Array retorna um array com todos os providers criados
- */
-export function factoryMetadata(data: Object): Array<Provider>;
-export function factoryMetadata(data: string): Array<Provider> {
-  let provide, useValue;
-
-  switch (true) {
-    case typeof data === 'string' && data.indexOf('.json') !== -1:
-      provide = {
-        provide: MockMedata,
-        useFactory: (xhr: BrowserXhr, zone: NgZone) => new JsonMetadata(data, xhr, zone),
-        deps: [BrowserXhr, NgZone]
-      };
-      useValue = JsonMetadata;
-      break;
-    case typeof data === 'object':
-      provide = {provide: MockMedata, useFactory: () => new MockMedata(data)};
-      useValue = MockMedata;
-      break;
-    default:
-      throw 'Argumento inválido';
-  }
-
-  let provideMetadata = {provide: Metadata, useExisting: useValue},
-      provideResolve = {provide: Resolve, useClass: Resolve};
-
-  return [provide, provideMetadata, provideResolve, RequestFactory];
-}
 
 /**
  * Classe responsável por criar objeto Request para uso do provider Http
