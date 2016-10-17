@@ -5,8 +5,11 @@
   "main": "dist/es5/index.js",
   "typings": "dist/es5/index.d.ts",
   "scripts": {
+    "clean": "rm -rf dist",
     "lint": "tslint -c ./tslint.json --project ./tsconfig-es5.json",
-    "build:js": "tsc -p tsconfig-es5.json"
+    "preparePackage": "node ./scripts/copy-package",
+    "build:js": "npm run clean && tsc -p tsconfig-es5.json && npm run preparePackage",
+    "publishPackage": "npm run lint && npm run build:js && cd dist && npm publish"
   },
   "devDependencies": {
     "@angular/core": "^2.0.1",
