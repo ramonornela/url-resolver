@@ -1,5 +1,5 @@
 {
-  "name": "@mba/url-resolver",
+  "name": "@ramonornela/url-resolver",
   "version": "0.0.1",
   "description": "",
   "main": "dist/es5/index.js",
@@ -29,7 +29,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bluebile/mba-url-resolver.git"
+    "url": "git+https://github.com/ramonornela/url-resolver.git"
   },
   "keywords": [
     "ionic",
@@ -43,7 +43,7 @@
   "author": "",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bluebile/mba-url-resolver/issues"
+    "url": "https://github.com/ramonornela/url-resolver/issues"
   },
-  "homepage": "https://github.com/bluebile/mba-url-resolver#readme"
+  "homepage": "https://github.com/ramonornela/url-resolver#readme"
 }
