@@ -1,12 +1,12 @@
 {
   "name": "@ramonornela/url-resolver",
   "version": "0.0.1",
-  "description": "",
+  "description": "Configuração de rota para objeto Http do Angular",
   "main": "dist/es5/index.js",
   "typings": "dist/es5/index.d.ts",
   "scripts": {
     "clean": "rm -rf dist",
-    "lint": "tslint -c ./tslint.json --project ./tsconfig-es5.json",
+    "lint": "tslint -c ./tslint.json --project ./tsconfig-es5.json --force",
     "preparePackage": "node ./scripts/copy-package",
     "build:js": "npm run clean && tsc -p tsconfig-es5.json && npm run preparePackage",
     "publishPackage": "npm run lint && npm run build:js && cd dist && npm publish"
@@ -40,7 +40,7 @@
     "get",
     "post"
   ],
-  "author": "",
+  "author": "Ramon Ornelas <ramon.ornela@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/ramonornela/url-resolver/issues"
