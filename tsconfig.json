@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "module": "es2015",
+    "allowSyntheticDefaultImports": true,
+    "module": "commonjs",
     "target": "es5",
     "experimentalDecorators": true,
     "sourceMap": true,

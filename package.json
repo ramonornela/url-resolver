@@ -2,14 +2,17 @@
   "name": "@ramonornela/url-resolver",
   "version": "0.0.2",
   "description": "Configuração de rota para objeto Http do Angular",
-  "main": "es5/index.js",
-  "typings": "es5/index.d.ts",
+  "main": "es2015/index.js",
+  "module": "es2015/index.js",
+  "typings": "es2015/index.d.ts",
   "scripts": {
     "clean": "rm -rf dist",
     "lint": "tslint -c ./tslint.json --project ./tsconfig-es5.json --force",
     "preparePackage": "node ./scripts/copy-package",
-    "build:js": "npm run clean && tsc -p tsconfig-es5.json && npm run preparePackage",
-    "publishPackage": "npm run lint && npm run build:js && cd dist && npm publish"
+    "build-cjs": "tsc -p .",
+    "build:es2015": "tsc -p tsconfig-es2015.json",
+    "build": "npm run clean && npm run build-cjs && npm run build:es2015 && npm run preparePackage",
+    "publishPackage": "npm run lint && npm run build && cd dist && npm publish"
   },
   "devDependencies": {
     "@angular/core": "^2.0.1",
