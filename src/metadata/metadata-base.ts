@@ -1,6 +1,6 @@
 import { HTTP_METHODS, Params } from './data-type';
 import { Metadata } from './metadata';
-import { Config } from '../../config'; // @todo isto vai ficar em modulo
+import { Config } from '@ramonornela/configuration';
 
 const KEY_DEFINE = '__defines__';
 
