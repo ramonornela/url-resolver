@@ -9,6 +9,7 @@ if (! packageJson) {
 }
 
 delete packageJson.devDependencies;
+delete packageJson.dependencies;
 delete packageJson.scripts;
 
 fs.writeFile('./dist/package.json', JSON.stringify(packageJson, null, 2));
