@@ -1,48 +1,19 @@
-import { NgModule, ModuleWithProviders, OpaqueToken } from '@angular/core';
-import { HttpModule, BrowserXhr } from '@angular/http';
+import { ConfigModule, Config } from '@ramonornela/configuration';
+import { NgModule } from '@angular/core';
 import { Resolve } from './resolve';
-import { RequestFactory } from './factory';
+import { Request } from './request';
 import { Metadata } from './metadata/metadata';
-import { JsonMetadata } from './metadata/json';
-import { MockMetadata } from './metadata/mock';
-
-export function factoryMockMetadata(data: any): MockMetadata {
-  return new MockMetadata(data);
-}
-
-export function factoryJsonMetadata(data: any, xhr: BrowserXhr): JsonMetadata {
-  return new JsonMetadata(data, xhr);
-}
-
-export const RouteToken = new OpaqueToken('ROUTETOKEN');
+import { MetadataBase } from './metadata/metadata-base';
 
 @NgModule({
   imports: [
-    HttpModule
+    ConfigModule
+  ],
+  providers: [
+    Resolve,
+    {provide: Metadata, useClass: MetadataBase, deps: [Config]},
+    Request
   ]
 })
 export class UrlResolverModule {
-  static initialize(data: Object | string): ModuleWithProviders {
-    let factory: Function;
-    switch (true) {
-      case typeof data === 'string' && data.indexOf('.json') !== -1:
-        factory = factoryJsonMetadata;
-        break;
-      case typeof data === 'object':
-        factory = factoryMockMetadata;
-        break;
-      default:
-        throw 'Argumento inválido';
-    }
-
-    return {
-      ngModule: UrlResolverModule,
-      providers: [
-        Resolve,
-        {provide: RouteToken, useValue: data},
-        {provide: Metadata, useFactory: factory, deps: [RouteToken, BrowserXhr]},
-        RequestFactory
-      ]
-    };
-  }
 }

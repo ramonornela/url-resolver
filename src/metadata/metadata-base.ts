@@ -1,15 +1,27 @@
 import { HTTP_METHODS, Params } from './data-type';
 import { Metadata } from './metadata';
+import { Config } from '../../config'; // @todo isto vai ficar em modulo
 
 const KEY_DEFINE = '__defines__';
 
-export abstract class MetadataBase implements Metadata {
+const KEY_CONFIG = 'routes';
 
-  protected _data: any;
+export class MetadataBase implements Metadata {
 
-  abstract getData(): any;
+  protected data: any;
 
-  protected _get(id: string): any {
+  constructor(private config: Config) {
+  }
+
+  getData(): any {
+    if (this.data === undefined || this.data === null) {
+      this.data = this.config.get(KEY_CONFIG);
+    }
+
+    return this.data;
+  }
+
+  protected get(id: string): any {
     let allData = this.getData();
 
     if (allData[id] === undefined) {
@@ -31,7 +43,7 @@ export abstract class MetadataBase implements Metadata {
   }
 
   getUrl(id: string): string {
-    let data = this._get(id),
+    let data = this.get(id),
         host = this.getDefine('host') || '',
         url  = data.url;
 
@@ -43,7 +55,7 @@ export abstract class MetadataBase implements Metadata {
   }
 
   getParams(id: string): {[name: string]: Params} {
-    let data = this._get(id);
+    let data = this.get(id);
     return data.params;
   }
 
@@ -52,7 +64,7 @@ export abstract class MetadataBase implements Metadata {
   }
 
   getHeaders(id?: string): {[key: string]: any} {
-    let data = id ? this._get(id) : {},
+    let data = id ? this.get(id) : {},
         dataMerge;
 
     dataMerge = this.mergeDefines(data, 'headers');

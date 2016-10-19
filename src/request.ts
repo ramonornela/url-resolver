@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Request, Headers, URLSearchParams } from '@angular/http';
+import { Request as RequestAngular, Headers, URLSearchParams } from '@angular/http';
 import { Resolve } from './resolve';
 
 /**
@@ -8,7 +8,7 @@ import { Resolve } from './resolve';
  * @usage
  * ```ts
  * import { Component } from '@angular/core';
- * import { RequestFactory } from './providers';
+ * import { Request } from './providers';
  *
  * @Component({
  *   template: '<ion-nav  #content swipeBackEnabled="true"></ion-nav>',
@@ -21,8 +21,8 @@ import { Resolve } from './resolve';
  * ```
  */
 @Injectable()
-export class RequestFactory {
-  constructor(private _resolve: Resolve) {
+export class Request {
+  constructor(private resolve: Resolve) {
   }
 
   /**
@@ -34,9 +34,9 @@ export class RequestFactory {
    * @param {?any} body
    * @return Request
    */
-  createRequest(id: string, params?: Object, headers?: {[key: string]: any}, body?: any): Request {
+  create(id: string, params?: Object, headers?: {[key: string]: any}, body?: any): RequestAngular {
     // merge headers
-    let headersDefault = this._resolve.getMetadata().getHeaders(id);
+    let headersDefault = this.resolve.getMetadata().getHeaders(id);
     if (typeof headers === 'object') {
       for (let index in headers) {
         headersDefault[index] = headers[index];
@@ -44,8 +44,8 @@ export class RequestFactory {
     }
 
     let options: any = {
-      method: this._resolve.getMetadata().getMethod(id),
-      url: this._resolve.url(id, params),
+      method: this.resolve.getMetadata().getMethod(id),
+      url: this.resolve.url(id, params),
       headers: new Headers(headersDefault),
       body: body
     };
@@ -55,7 +55,7 @@ export class RequestFactory {
       this.serializeParams(id, options, params);
     }
 
-    return new Request(options);
+    return new RequestAngular(options);
   }
 
   /**
@@ -72,7 +72,7 @@ export class RequestFactory {
       case 'GET':
       case 'DELETE':
         // validacao dos parametros
-        this._resolve.validateParams(id, Object.assign({}, params), true);
+        this.resolve.validateParams(id, Object.assign({}, params), true);
         options.search = this.createSearchParams(params);
         break;
       case 'POST':

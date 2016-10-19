@@ -1,5 +1,5 @@
-import { Metadata } from './metadata/metadata';
 import { Injectable } from '@angular/core';
+import { Metadata } from './metadata/metadata';
 
 @Injectable()
 export class Resolve {
