@@ -4,7 +4,7 @@ import { Config } from '@ramonornela/configuration';
 
 const KEY_DEFINE = '__defines__';
 
-const KEY_CONFIG = 'routes';
+const KEY_CONFIG = 'urlResolver';
 
 export class MetadataBase implements Metadata {
 
