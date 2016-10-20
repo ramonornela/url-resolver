@@ -17,7 +17,7 @@
   "dependencies": {
     "@angular/core": "^2.0.1",
     "@angular/http": "^2.0.1",
-    "@ramonornela/configuration": "^0.0.1"
+    "@ramonornela/configuration": "^0.0.2"
   },
   "devDependencies": {
     "@angular/compiler": "^2.0.1",
