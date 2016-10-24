@@ -1,6 +1,6 @@
 {
   "name": "@ramonornela/url-resolver",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Configuração de rota para objeto Http do Angular",
   "main": "es2015/index.js",
   "module": "es2015/index.js",
