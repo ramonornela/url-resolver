@@ -11,10 +11,8 @@ export class Resolve {
 
     let paramsLeftOver: Array<string> = [];
 
-    // valida parametros e preenche valor default
     this.validateParams(id, params);
 
-    // realiza replace da url
     let url: string = this.metadata.getUrl(id);
     for (let index in params) {
       url = this.replaceUrl(
@@ -27,12 +25,12 @@ export class Resolve {
     }
 
     if (params && Object.keys(params).length) {
-      // valida parametros globais
+      // validate parameters globals
       this.validateParamsGlobals(params);
-      // retorna parametros gloais __defines__
+      // return parameters globals
       let paramsGlobals = this.metadata.getParamsGlobals();
 
-      // realiza replace de parametros globais
+      // replacements of parameters globals
       for (let paramGlobal in paramsGlobals) {
         if (paramsLeftOver.indexOf(paramGlobal) !== -1 && params[paramGlobal]) {
           url = this.replaceUrl(url, paramGlobal, params[paramGlobal], params);
@@ -49,10 +47,10 @@ export class Resolve {
 
     paramsLeftOver = paramsLeftOver || [];
 
-    // realiza replace dos parametros
+    // replace on url
     url = url.replace(regex, value);
 
-    // se os parametros não existirem na url são excluidos
+    // parameters not exists on url are deleted
     if (!urlPrevious.match(regex)) {
       paramsLeftOver.push(index);
     } else if (urlPrevious.match(regex)) {
@@ -76,15 +74,15 @@ export class Resolve {
 
   private _validateParams(paramsIds: any, params: Object, onlyAssign?: boolean, id?: string) {
     for (let param in paramsIds) {
-      // pula parametros não presentes no objeto, validando somente os parametros informados
+      // skip parameters is not present in object
       if (onlyAssign && !(param in params)) {
         continue;
       }
 
-      // atribui valor padrão
+      // assign default value
       this.setDefaultValue(paramsIds, param, params);
 
-      // realiza validação de tipo dado, requerido e regex
+      //  validate by data type, required ...
       this.validates(paramsIds, param, params);
     }
   }
@@ -93,7 +91,7 @@ export class Resolve {
     let defaultValue;
 
     if (paramsIds[param] === null || paramsIds[param] === undefined) {
-      throw 'Parametro ' + param + ' inexistente';
+      throw 'Parameter ' + param + ' not exists';
     }
 
     defaultValue = paramsIds[param].default;
@@ -108,36 +106,35 @@ export class Resolve {
     let require, type;
 
     if (paramsIds[param] === null || paramsIds[param] === undefined) {
-      throw 'Parametro inexistente.';
+      throw 'Parameter not exists';
     }
 
-    // valida por tipo de dado
+    // validate by data type
     type = paramsIds[param].type || 'string';
-
     if (typeof params[param] !== type) {
-      throw 'Tipo de dado invalido parametro: ' + param + ' tipo ' + (typeof params[param]);
+      throw 'Data type invalid parameter: ' + param + ' type ' + (typeof params[param]);
     }
 
-    // valida parametro requerido
+    // validate parameter is required
     require = paramsIds[param].required || false;
     if (require) {
       if (params[param] === null || params[param] === undefined) {
-        throw 'Parametro ' + param + ' é requerido.';
+        throw 'Parameter ' + param + ' is required.';
       }
     }
 
-    // validação por regex
     if (paramsIds[param].validation) {
       let validation: any = paramsIds[param].validation;
       switch (true) {
-        case validation instanceof RegExp:
-          if (!params[param].toString().match(validation)) { // força conversão para string para validação da regex
-            throw 'Parametro deve seguir o padrão ' + validation;
+        case typeof validation === 'string':
+          let regex = new RegExp(validation);
+          if (!regex.test(params[param].toString())) {
+            throw 'Parameter should follow the rule ' + validation;
           }
           break;
         case Array.isArray(validation):
           if (validation.indexOf(params[param]) === -1) {
-            throw 'Parametro deve  ser (' + validation.join(',') + ')';
+            throw 'Param should be (' + validation.join(',') + ')';
           }
           break;
       }
