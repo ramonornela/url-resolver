@@ -24,11 +24,12 @@ export class Resolve {
       );
     }
 
+    // return parameters globals
+    let paramsGlobals = this.metadata.getParamsGlobals();
+
     if (params && Object.keys(params).length) {
       // validate parameters globals
       this.validateParamsGlobals(params);
-      // return parameters globals
-      let paramsGlobals = this.metadata.getParamsGlobals();
 
       // replacements of parameters globals
       for (let paramGlobal in paramsGlobals) {
@@ -38,22 +39,27 @@ export class Resolve {
       }
     }
 
+    // replace params globals with default value
+    for (let paramGlobal in paramsGlobals) {
+      if (paramsGlobals[paramGlobal]['default'] !== null) {
+        url = this.replaceUrl(url, paramGlobal, paramsGlobals[paramGlobal]['default']);
+      }
+    }
+
     return url;
   }
 
-  replaceUrl(url: string, index: string, value: any, params: Object, paramsLeftOver?: Array<string>) {
+  replaceUrl(url: string, index: string, value: any, params?: Object, paramsLeftOver?: Array<string>) {
     let regex = new RegExp('\\$' + index, 'g'),
         urlPrevious = url;
-
-    paramsLeftOver = paramsLeftOver || [];
 
     // replace on url
     url = url.replace(regex, value);
 
     // parameters not exists on url are deleted
-    if (!urlPrevious.match(regex)) {
+    if (!urlPrevious.match(regex) && Array.isArray(paramsLeftOver)) {
       paramsLeftOver.push(index);
-    } else if (urlPrevious.match(regex)) {
+    } else if (urlPrevious.match(regex) && (typeof params === 'object')) {
       delete params[index];
     }
 
