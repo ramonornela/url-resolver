@@ -46,6 +46,13 @@ export class Resolve {
       }
     }
 
+    let variables = this.metadata.getDefine('variables');
+
+    // replace url variables
+    for (let variableName in variables) {
+      url = this.replaceUrl(url, variableName, variables[variableName]);
+    }
+
     return url;
   }
 

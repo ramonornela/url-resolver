@@ -9,4 +9,5 @@ export abstract class Metadata {
   abstract getParams(id?: string): {[name: string]: Params};
   abstract getParamsGlobals(): any;
   abstract getHeaders(id?: string): {[key: string]: any};
+  abstract getDefine(key: string): any;
 }

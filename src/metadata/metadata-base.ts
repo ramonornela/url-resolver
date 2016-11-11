@@ -88,7 +88,7 @@ export class MetadataBase implements Metadata {
     return data;
   }
 
-  protected getDefine(key: string) {
+  getDefine(key: string): any {
     let data = this.getData();
 
     if ((data[KEY_DEFINE] !== null && data[KEY_DEFINE] !== undefined)
