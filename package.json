@@ -7,10 +7,10 @@
   "module": "dist/esm/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
-    "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json --force",
+    "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json",
     "package:json": "node ./scripts/package",
-    "build:umd": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig.json",
-    "build:esm": "node --max_old_space_size=8096 ./node_modules/.bin/ngc -p tsconfig-esm.json",
+    "build:umd": "ngc",
+    "build:esm": "ngc -p tsconfig-esm.json",
     "build": "npm run clean && npm run build:umd && npm run build:esm && npm run package:json --prepare",
     "publishPackage": "npm run lint && npm run build && npm publish --access public && npm run package:json --restore"
   },
@@ -20,19 +20,19 @@
     "README.md"
   ],
   "dependencies": {
-    "@angular/core": "^2.0.1",
-    "@angular/http": "^2.0.1",
+    "@angular/core": "2.1.2",
+    "@angular/http": "2.1.2",
     "@ramonornela/configuration": "^0.0.8"
   },
   "devDependencies": {
-    "@angular/compiler": "~2.1.0",
-    "@angular/compiler-cli": "~2.1.0",
+    "@angular/compiler": "2.1.2",
+    "@angular/compiler-cli": "2.1.2",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "^0.6.21",
-    "typescript": "^2.0.3",
+    "typescript": "^2.0.6",
     "tslint": "3.15.1",
     "tslint-eslint-rules": "1.5.0",
-    "tslint-ionic-rules": "0.0.7",
+    "tslint-ionic-rules": "0.0.8",
     "rimraf": "^2.5.4"
   },
   "peerDependencies": {
