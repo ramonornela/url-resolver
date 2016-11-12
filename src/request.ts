@@ -4,30 +4,24 @@ import { Resolve } from './resolve';
 
 /**
  *
- * @usage
- * ```ts
- * ```
  */
 @Injectable()
 export class Request {
-  constructor(private resolve: Resolve) {
-  }
+  constructor(private resolve: Resolve) {}
 
-  create(id: string, params?: Object, headers?: {[key: string]: any}, body?: any): RequestAngular {
+  create(id: string, params?: Object, options: any = {}): RequestAngular {
     // merge headers
+    options.headers = options.headers || {};
     let headersDefault = this.resolve.getMetadata().getHeaders(id);
-    if (typeof headers === 'object') {
-      for (let index in headers) {
-        headersDefault[index] = headers[index];
-      }
+    for (let index in options.headers) {
+      headersDefault[index] = options.headers[index];
     }
 
-    let options: any = {
+    Object.assign(options, {
       method: this.resolve.getMetadata().getMethod(id),
       url: this.resolve.url(id, params),
-      headers: new Headers(headersDefault),
-      body: body
-    };
+      headers: new Headers(headersDefault)
+    });
 
     if (params && Object.keys(params).length) {
       this.serializeParams(id, options, params);
@@ -41,13 +35,12 @@ export class Request {
     switch (options.method) {
       case 'GET':
       case 'DELETE':
-        // validacao dos parametros
+        // validate params
         this.resolve.validateParams(id, Object.assign({}, params), true);
         options.search = this.createSearchParams(params);
         break;
       case 'POST':
         if (!options.body) {
-          // @todo analisar a possibilidade de implementar conversão de params de acordo com o tipo
           options.body = params;
           let contentType = options.headers.get('content-type');
           if (!contentType) {
@@ -62,7 +55,7 @@ export class Request {
   private createSearchParams(params: Object): URLSearchParams {
     let search = new URLSearchParams('');
     for (let param in params) {
-      // @todo implementar append
+      // @todo implements append
       if (typeof params[param] === 'object') {
         search.set(param, JSON.stringify(params[param]));
       } else {
