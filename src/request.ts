@@ -7,7 +7,10 @@ import { Resolve } from './resolve';
  */
 @Injectable()
 export class Request {
-  constructor(private resolve: Resolve) {}
+
+  protected defaultOptions: any = {};
+
+  constructor(protected resolve: Resolve) {}
 
   create(id: string, params?: Object, options: any = {}): RequestAngular {
     // merge headers
@@ -16,6 +19,8 @@ export class Request {
     for (let index in options.headers) {
       headersDefault[index] = options.headers[index];
     }
+
+    options = Object.assign(this.defaultOptions, options);
 
     Object.assign(options, {
       method: this.resolve.getMetadata().getMethod(id),
@@ -30,7 +35,11 @@ export class Request {
     return new RequestAngular(options);
   }
 
-  private serializeParams(id: string, options: any, params: Object) {
+  setDefaultOptions(options: any) {
+    this.defaultOptions = options;
+  }
+
+  protected serializeParams(id: string, options: any, params: Object) {
 
     switch (options.method) {
       case 'GET':
@@ -52,7 +61,7 @@ export class Request {
     }
   }
 
-  private createSearchParams(params: Object): URLSearchParams {
+  protected createSearchParams(params: Object): URLSearchParams {
     let search = new URLSearchParams('');
     for (let param in params) {
       // @todo implements append
