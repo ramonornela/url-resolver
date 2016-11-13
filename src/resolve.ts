@@ -54,7 +54,7 @@ export class Resolve {
     }
 
     // replace host
-    let host = this.getDefine('host') || '';
+    let host = this.metadata.getDefine('host') || '';
 
     if (url.indexOf('http') === -1) {
       url = host.replace(/\/$/, '') + '/' + url.replace(/^\//, '');
