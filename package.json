@@ -7,7 +7,7 @@
   "module": "dist/esm/index.js",
   "scripts": {
     "clean": "rimraf ./dist",
-    "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json --force",
+    "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json",
     "package:json": "node ./scripts/package",
     "build:umd": "ngc",
     "build:esm": "ngc -p tsconfig-esm.json",
