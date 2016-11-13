@@ -53,6 +53,13 @@ export class Resolve {
       url = this.replaceUrl(url, variableName, variables[variableName]);
     }
 
+    // replace host
+    let host = this.getDefine('host') || '';
+
+    if (url.indexOf('http') === -1) {
+      url = host.replace(/\/$/, '') + '/' + url.replace(/^\//, '');
+    }
+
     return url;
   }
 

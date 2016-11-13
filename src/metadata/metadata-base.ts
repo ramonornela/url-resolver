@@ -43,15 +43,8 @@ export class MetadataBase implements Metadata {
   }
 
   getUrl(id: string): string {
-    let data = this.get(id),
-        host = this.getDefine('host') || '',
-        url  = data.url;
-
-    if (url.indexOf('http') === -1) {
-      url = host.replace(/\/$/, '') + '/' + url.replace(/^\//, '');
-    }
-
-    return url;
+    let data = this.get(id);
+    return data.url;
   }
 
   getParams(id: string): {[name: string]: Params} {
