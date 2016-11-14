@@ -13,14 +13,15 @@ export class Request {
   constructor(protected resolve: Resolve) {}
 
   create(id: string, params?: Object, options: any = {}): RequestAngular {
+    let defaultOptions = Object.assign({}, this.defaultOptions);
+    options = Object.assign(defaultOptions, options);
+
     // merge headers
     options.headers = options.headers || {};
     let headersDefault = this.resolve.getMetadata().getHeaders(id);
     for (let index in options.headers) {
       headersDefault[index] = options.headers[index];
     }
-
-    options = Object.assign(this.defaultOptions, options);
 
     Object.assign(options, {
       method: this.resolve.getMetadata().getMethod(id),
