@@ -145,7 +145,7 @@ export class Resolve {
 
     defaultValue = paramsIds[param].default;
 
-    if (defaultValue && (params[param] === null || params[param] === undefined)) {
+    if ((defaultValue !== null && defaultValue !== undefined) && (params[param] === null || params[param] === undefined)) {
       params[param] = defaultValue;
     }
   }
