@@ -145,7 +145,7 @@ export class Resolve {
 
     defaultValue = paramsIds[param].default;
 
-    if (params[param] === null || params[param] === undefined) {
+    if (defaultValue && (params[param] === null || params[param] === undefined)) {
       params[param] = defaultValue;
     }
   }
@@ -160,7 +160,7 @@ export class Resolve {
 
     // validate by data type
     type = paramsIds[param].type || 'string';
-    if (typeof params[param] !== type) {
+    if (typeof params[param] !== type && (params[param] !== null && params[param] !== undefined)) {
       throw 'Data type invalid parameter: ' + param + ' type ' + (typeof params[param]);
     }
 
