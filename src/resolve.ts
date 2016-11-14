@@ -61,7 +61,7 @@ export class Resolve {
   }
 
   replaceUrl(url: string, index: string, value: any, params?: Object, paramsLeftOver?: Array<string>) {
-    let variable = '\\' + this.preffixVariable + index + '\\' + this.suffixVariable;
+    let variable = '\\' + this.preffixVariable + index + '\\' + this.suffixVariable,
         regex = new RegExp(variable, 'g'),
         urlPrevious = url;
 
