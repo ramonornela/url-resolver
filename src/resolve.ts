@@ -3,7 +3,21 @@ import { Metadata } from './metadata/metadata';
 
 @Injectable()
 export class Resolve {
-  constructor(private metadata: Metadata) {
+
+  private preffixVariable: string = '{';
+
+  private suffixVariable: string = '}';
+
+  constructor(private metadata: Metadata) {}
+
+  setPreffixVariable(preffix: string): this {
+    this.preffixVariable = preffix;
+    return this;
+  }
+
+  setSuffixVariable(suffix: string): this {
+    this.suffixVariable = suffix;
+    return this;
   }
 
   url(id: string, params?: Object): string {
@@ -47,7 +61,8 @@ export class Resolve {
   }
 
   replaceUrl(url: string, index: string, value: any, params?: Object, paramsLeftOver?: Array<string>) {
-    let regex = new RegExp('\\$' + index, 'g'),
+    let variable = '\\' + this.preffixVariable + index + '\\' + this.suffixVariable;
+        regex = new RegExp(variable, 'g'),
         urlPrevious = url;
 
     // replace on url
