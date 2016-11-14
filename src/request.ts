@@ -23,14 +23,16 @@ export class Request {
       headersDefault[index] = options.headers[index];
     }
 
+    let copyParams = Object.assign({}, params);
+
     Object.assign(options, {
       method: this.resolve.getMetadata().getMethod(id),
-      url: this.resolve.url(id, params),
+      url: this.resolve.url(id, copyParams),
       headers: new Headers(headersDefault)
     });
 
-    if (params && Object.keys(params).length) {
-      this.serializeParams(id, options, params);
+    if (copyParams && Object.keys(copyParams).length) {
+      this.serializeParams(id, options, copyParams);
     }
 
     return new RequestAngular(options);
