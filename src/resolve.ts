@@ -39,26 +39,9 @@ export class Resolve {
       }
     }
 
-    // replace params globals with default value
-    for (let paramGlobal in paramsGlobals) {
-      if (paramsGlobals[paramGlobal]['default'] !== null) {
-        url = this.replaceUrl(url, paramGlobal, paramsGlobals[paramGlobal]['default']);
-      }
-    }
-
-    let variables = this.metadata.getDefine('variables');
-
-    // replace url variables
-    for (let variableName in variables) {
-      url = this.replaceUrl(url, variableName, variables[variableName]);
-    }
-
-    // replace host
-    let host = this.metadata.getDefine('host') || '';
-
-    if (url.indexOf('http') === -1) {
-      url = host.replace(/\/$/, '') + '/' + url.replace(/^\//, '');
-    }
+    url = this.replaceUrlParamsGlobalsDefaultValue(paramsGlobals, url);
+    url = this.replaceUrlVariables(url);
+    url = this.replaceUrlHost(url);
 
     return url;
   }
@@ -75,6 +58,37 @@ export class Resolve {
       paramsLeftOver.push(index);
     } else if (urlPrevious.match(regex) && (typeof params === 'object')) {
       delete params[index];
+    }
+
+    return url;
+  }
+
+  private replaceUrlParamsGlobalsDefaultValue(paramsGlobals: any, url: string): string {
+    for (let paramGlobal in paramsGlobals) {
+      if (paramsGlobals[paramGlobal]['default'] !== null) {
+        url = this.replaceUrl(url, paramGlobal, paramsGlobals[paramGlobal]['default']);
+      }
+    }
+
+    return url;
+  }
+
+  private replaceUrlVariables(url: string): string {
+    let variables = this.metadata.getDefine('variables');
+
+    for (let variableName in variables) {
+      url = this.replaceUrl(url, variableName, variables[variableName]);
+    }
+
+    return url;
+  }
+
+  private replaceUrlHost(url: string): string {
+    // replace host
+    let host = this.metadata.getDefine('host') || '';
+
+    if (url.indexOf('http') === -1) {
+      url = host.replace(/\/$/, '') + '/' + url.replace(/^\//, '');
     }
 
     return url;
