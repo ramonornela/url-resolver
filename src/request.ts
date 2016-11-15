@@ -26,7 +26,7 @@ export class Request {
     let copyParams = Object.assign({}, params);
 
     Object.assign(options, {
-      method: this.resolve.getMetadata().getMethod(id),
+      method: options.method || this.resolve.getMetadata().getMethod(id),
       url: this.resolve.url(id, copyParams),
       headers: new Headers(headersDefault)
     });
