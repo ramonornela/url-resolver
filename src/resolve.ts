@@ -70,7 +70,9 @@ export class Resolve {
         urlPrevious = url;
 
     // replace on url
-    url = url.replace(regex, value);
+    if (value !== null && value !== undefined) {
+      url = url.replace(regex, value);
+    }
 
     // parameters not exists on url are deleted
     if (!urlPrevious.match(regex) && Array.isArray(paramsLeftOver)) {
