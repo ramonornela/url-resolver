@@ -1,6 +1,6 @@
 {
   "name": "@ramonornela/url-resolver",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Configuração de rota para objeto Http do Angular",
   "main": "dist/umd/index.js",
   "typings": "dist/esm/index.d.ts",
