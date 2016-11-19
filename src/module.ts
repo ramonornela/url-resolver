@@ -1,9 +1,6 @@
 import { ConfigModule, Config } from '@ramonornela/configuration';
 import { NgModule } from '@angular/core';
-import { Resolve } from './resolve';
-import { Request } from './request';
-import { Metadata } from './metadata/metadata';
-import { MetadataBase } from './metadata/metadata-base';
+import { Resolve, Request, Metadata, MetadataBase } from './providers';
 
 @NgModule({
   imports: [
