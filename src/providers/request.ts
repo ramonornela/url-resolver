@@ -52,6 +52,7 @@ export class Request {
         options.search = this.createSearchParams(params);
         break;
       case 'POST':
+      case 'PUT':
         if (!options.body) {
           options.body = params;
           let contentType = options.headers.get('content-type');
