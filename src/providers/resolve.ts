@@ -95,7 +95,7 @@ export class Resolve {
   }
 
   private replaceUrlVariables(url: string): string {
-    let variables = this.metadata.getDefine('variables');
+    let variables = this.metadata.getDefaults('variables');
 
     for (let variableName in variables) {
       url = this.replaceUrl(url, variableName, variables[variableName]);
@@ -106,7 +106,7 @@ export class Resolve {
 
   private replaceUrlHost(url: string): string {
     // replace host
-    let host = this.metadata.getDefine('host') || '';
+    let host = this.metadata.getDefaults('host') || '';
 
     if (url.indexOf('http') === -1) {
       url = host.replace(/\/$/, '') + '/' + url.replace(/^\//, '');

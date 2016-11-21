@@ -2,7 +2,7 @@ import { HTTP_METHODS, Params } from './data-type';
 import { Metadata } from './metadata';
 import { Config } from '@ramonornela/configuration';
 
-const KEY_DEFINE = '__defines__';
+const KEY_DEFAULTS = '_defaults;
 
 const KEY_CONFIG = 'urlResolver';
 
@@ -53,40 +53,40 @@ export class MetadataBase implements Metadata {
   }
 
   getParamsGlobals(): any {
-    return this.getDefine('params');
+    return this.getDefaults('params');
   }
 
   getHeaders(id?: string): {[key: string]: any} {
     let data = id ? this.get(id) : {},
         dataMerge;
 
-    dataMerge = this.mergeDefines(data, 'headers');
+    dataMerge = this.mergeDefaults(data, 'headers');
 
     return dataMerge.headers;
   }
 
-  protected mergeDefines(data: Object, key: string): any {
+  protected mergeDefaults(data: Object, key: string): any {
 
     if (data[key] === null || data[key] === undefined) {
       data[key] = {};
     }
 
-    let defines = this.getDefine(key);
-    for (let index in defines) {
+    let defaults = this.getDefaults(key);
+    for (let index in defaults) {
       if (data[key][index] === null || data[key][index] === undefined) {
-        data[key][index] = defines[index];
+        data[key][index] = defaults[index];
       }
     }
 
     return data;
   }
 
-  getDefine(key: string): any {
+  getDefaults(key: string): any {
     let data = this.getData();
 
-    if ((data[KEY_DEFINE] !== null && data[KEY_DEFINE] !== undefined)
-       && (data[KEY_DEFINE][key] !== null && data[KEY_DEFINE][key] !== undefined)) {
-      return data[KEY_DEFINE][key];
+    if ((data[KEY_DEFAULTS] !== null && data[KEY_DEFAULTS] !== undefined)
+       && (data[KEY_DEFAULTS][key] !== null && data[KEY_DEFAULTS][key] !== undefined)) {
+      return data[KEY_DEFAULT][key];
     }
 
     return null;
