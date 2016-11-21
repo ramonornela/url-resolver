@@ -2,7 +2,7 @@ import { HTTP_METHODS, Params } from './data-type';
 import { Metadata } from './metadata';
 import { Config } from '@ramonornela/configuration';
 
-const KEY_DEFAULTS = '_defaults;
+const KEY_DEFAULTS = '_defaults';
 
 const KEY_CONFIG = 'urlResolver';
 
@@ -86,7 +86,7 @@ export class MetadataBase implements Metadata {
 
     if ((data[KEY_DEFAULTS] !== null && data[KEY_DEFAULTS] !== undefined)
        && (data[KEY_DEFAULTS][key] !== null && data[KEY_DEFAULTS][key] !== undefined)) {
-      return data[KEY_DEFAULT][key];
+      return data[KEY_DEFAULTS][key];
     }
 
     return null;
