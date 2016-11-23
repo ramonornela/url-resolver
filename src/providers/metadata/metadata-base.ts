@@ -8,7 +8,7 @@ const KEY_CONFIG = 'urlResolver';
 
 export class MetadataBase implements Metadata {
 
-  protected data: any = {};
+  protected data: any;
 
   constructor(private config: Config) {
     this.data = this.getData();
