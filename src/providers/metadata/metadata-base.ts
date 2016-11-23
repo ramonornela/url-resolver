@@ -46,7 +46,7 @@ export class MetadataBase implements Metadata {
   get(id: string): any {
 
     if (this.data[id] === undefined) {
-      throw 'Identificador inexistente no arquivo de rota';
+      throw `Identificator '${id}' not exists`;
     }
 
     return this.data[id];
