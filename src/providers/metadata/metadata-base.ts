@@ -10,7 +10,9 @@ export class MetadataBase implements Metadata {
 
   protected data: any = {};
 
-  constructor(private config: Config) {}
+  constructor(private config: Config) {
+    this.data = this.getData();
+  }
 
   protected getData(): any {
     if (this.data === undefined || this.data === null) {
@@ -20,47 +22,56 @@ export class MetadataBase implements Metadata {
     return this.data;
   }
 
-  get(id: string): any {
-    let allData = this.getData();
-
-    if (allData[id] === undefined) {
-      throw 'Identificador inexistente no arquivo de rota';
-    }
-
-    return allData[id];
-  }
-
-  has(id: string): boolean {
-    let allData = this.getData();
-
-    return id in allData;
-  }
-
-  getMethod(id: string): HTTP_METHODS {
-
-    let allData = this.getData();
-
-    if (allData[id].method === undefined) {
-      return 'GET';
-    }
-
-    return allData[id].method;
-  }
-
-  getUrl(id: string): string {
-    let data = this.get(id);
-    return data.url;
-  }
-
-  _set(id: string, key: string, value: any) {
+  protected _set(id: string, key: string, value: any) {
     this.data[id] = this.data[id] || {};
     this.data[id][key] =  value;
   }
 
-  _add(id: string, key: string, value: any) {
+  protected _add(id: string, key: string, value: any) {
     this.data[id] = this.data[id] || {};
     this.data[id][key] = this.data[id][key] || {};
     Object.assign(this.data[id][key], value);
+  }
+
+  protected _get(id: string, key: string, merge: false) {
+    let data = this.get(id) || {};
+
+    if (merge) {
+      data = this.mergeDefaults(data, key);
+    }
+
+    return data[key];
+  }
+
+  get(id: string): any {
+
+    if (this.data[id] === undefined) {
+      throw 'Identificador inexistente no arquivo de rota';
+    }
+
+    return this.data[id];
+  }
+
+  has(id: string): boolean {
+    return id in this.data;
+  }
+
+  setMethod(id: string, method: string): this {
+    this._set(id, 'method', method);
+    return this;
+  }
+
+  getMethod(id: string): HTTP_METHODS {
+    return this._get(id, 'method', false);
+  }
+
+  setUrl(id: string, url: string): this {
+    this._set(id, 'url', url);
+    return this;
+  }
+
+  getUrl(id: string): string {
+    return this._get(id, 'url', false);
   }
 
   setParams(id: string, params: Array<{[name: string]: Params}>): this {
@@ -74,8 +85,7 @@ export class MetadataBase implements Metadata {
   }
 
   getParams(id: string): {[name: string]: Params} {
-    let data = this.get(id);
-    return data.params;
+    return this._get(id, 'params', false);
   }
 
   setHeaders(id: string, headers: Array<{[name: string]: Params}>): this {
@@ -89,12 +99,7 @@ export class MetadataBase implements Metadata {
   }
 
   getHeaders(id?: string): {[key: string]: any} {
-    let data = id ? this.get(id) : {},
-        dataMerge;
-
-    dataMerge = this.mergeDefaults(data, 'headers');
-
-    return dataMerge.headers;
+    return this._get(id, 'headers', true);
   }
 
   protected mergeDefaults(data: Object, key: string): any {
@@ -124,7 +129,7 @@ export class MetadataBase implements Metadata {
   }
 
   getDefaults(key: string): any {
-    let data = this.getData();
+    let data = this.data;
 
     if ((data[KEY_DEFAULTS] !== null && data[KEY_DEFAULTS] !== undefined)
        && (data[KEY_DEFAULTS][key] !== null && data[KEY_DEFAULTS][key] !== undefined)) {
