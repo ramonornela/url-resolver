@@ -10,7 +10,7 @@ export class Request {
 
   protected defaultOptions: any = {};
 
-  constructor(protected resolve: Resolve) {}
+  constructor(public resolve: Resolve) {}
 
   create(id: string, params?: Object, options: any = {}): RequestAngular {
     let defaultOptions = Object.assign({}, this.defaultOptions);
@@ -18,7 +18,7 @@ export class Request {
 
     // merge headers
     options.headers = options.headers || {};
-    let headersDefault = this.resolve.getMetadata().getHeaders(id);
+    let headersDefault = this.resolve.metadata.getHeaders(id);
     for (let index in options.headers) {
       headersDefault[index] = options.headers[index];
     }
@@ -26,7 +26,7 @@ export class Request {
     let copyParams = Object.assign({}, params);
 
     Object.assign(options, {
-      method: options.method || this.resolve.getMetadata().getMethod(id),
+      method: options.method || this.resolve.metadata.getMethod(id),
       url: this.resolve.url(id, copyParams),
       headers: new Headers(headersDefault)
     });

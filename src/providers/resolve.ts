@@ -8,7 +8,7 @@ export class Resolve {
 
   private suffixVariable: string = '}';
 
-  constructor(private metadata: Metadata) {}
+  constructor(public metadata: Metadata) {}
 
   setPreffixVariable(preffix: string): this {
     this.preffixVariable = preffix;
@@ -113,10 +113,6 @@ export class Resolve {
     }
 
     return url;
-  }
-
-  getMetadata(): Metadata {
-    return this.metadata;
   }
 
   validateParamsGlobals(params: Object) {
