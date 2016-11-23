@@ -8,12 +8,11 @@ const KEY_CONFIG = 'urlResolver';
 
 export class MetadataBase implements Metadata {
 
-  protected data: any;
+  protected data: any = {};
 
-  constructor(private config: Config) {
-  }
+  constructor(private config: Config) {}
 
-  getData(): any {
+  protected getData(): any {
     if (this.data === undefined || this.data === null) {
       this.data = this.config.get(KEY_CONFIG);
     }
@@ -21,7 +20,7 @@ export class MetadataBase implements Metadata {
     return this.data;
   }
 
-  protected get(id: string): any {
+  get(id: string): any {
     let allData = this.getData();
 
     if (allData[id] === undefined) {
@@ -29,6 +28,12 @@ export class MetadataBase implements Metadata {
     }
 
     return allData[id];
+  }
+
+  has(id: string): boolean {
+    let allData = this.getData();
+
+    return id in allData;
   }
 
   getMethod(id: string): HTTP_METHODS {
@@ -47,13 +52,40 @@ export class MetadataBase implements Metadata {
     return data.url;
   }
 
+  _set(id: string, key: string, value: any) {
+    this.data[id] = this.data[id] || {};
+    this.data[id][key] =  value;
+  }
+
+  _add(id: string, key: string, value: any) {
+    this.data[id] = this.data[id] || {};
+    this.data[id][key] = this.data[id][key] || {};
+    Object.assign(this.data[id][key], value);
+  }
+
+  setParams(id: string, params: Array<{[name: string]: Params}>): this {
+    this._set(id, 'params', params);
+    return this;
+  }
+
+  addParam(id: string, param: {[name: string]: Params}): this {
+    this._add(id, 'params', param);
+    return this;
+  }
+
   getParams(id: string): {[name: string]: Params} {
     let data = this.get(id);
     return data.params;
   }
 
-  getParamsGlobals(): any {
-    return this.getDefaults('params');
+  setHeaders(id: string, headers: Array<{[name: string]: Params}>): this {
+    this._set(id, 'headers', headers);
+    return this;
+  }
+
+  addHeader(id: string, header: {[name: string]: Params}): this {
+    this._add(id, 'headers', header);
+    return this;
   }
 
   getHeaders(id?: string): {[key: string]: any} {
@@ -79,6 +111,16 @@ export class MetadataBase implements Metadata {
     }
 
     return data;
+  }
+
+  setDefaults(key: string, defaults: any): this {
+    this._set(KEY_DEFAULTS, key, defaults);
+    return this;
+  }
+
+  addDefaults(key: string, defaults: any): this {
+    this._add(KEY_DEFAULTS, key, defaults);
+    return this;
   }
 
   getDefaults(key: string): any {
