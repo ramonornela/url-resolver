@@ -39,7 +39,7 @@ export class Resolve {
     }
 
     // return parameters globals
-    let paramsGlobals = this.metadata.getParamsGlobals();
+    let paramsGlobals = this.metadata.getDefaults('params');
 
     if (params && Object.keys(params).length) {
       // validate parameters globals
@@ -120,7 +120,7 @@ export class Resolve {
   }
 
   validateParamsGlobals(params: Object) {
-    this._validateParams(this.metadata.getParamsGlobals(), params, true);
+    this._validateParams(this.metadata.getDefaults('params'), params, true);
   }
 
   validateParams(id: string, params: Object, onlyAssign?: boolean) {
