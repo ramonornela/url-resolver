@@ -33,7 +33,7 @@ export class MetadataBase implements Metadata {
     Object.assign(this.data[id][key], value);
   }
 
-  protected _get(id: string, key: string, merge: false) {
+  protected _get(id: string, key: string, merge: boolean) {
     let data = this.get(id) || {};
 
     if (merge) {
