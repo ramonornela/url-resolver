@@ -58,7 +58,7 @@ export class Resolve {
     url = this.replaceUrlHost(url);
 
     // delete params not required
-    let regex = new RegExp('(?:(:?(:?\\?|&)[\w\-]+=)|\/)\\' + this.preffixVariable + '[\w\-]+\\' + this.suffixVariable, 'g');
+    let regex = new RegExp('(?:(:?(:?\\?|&)[\\w\\-]+=)|\\/)\\' + this.preffixVariable + '[\\w\\-]+\\' + this.suffixVariable, 'g');
     url = url.replace(regex, '');
 
     return url;
