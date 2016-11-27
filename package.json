@@ -7,17 +7,22 @@
   "module": "dist/esm/index.js",
   "scripts": {
     "build": "npm run clean && npm run build:umd && npm run build:esm",
-    "build:lint": "npm run lint && npm run build",
+    "build:qa": "npm run lint && npm run test && npm run build",
     "build:esm": "ngc -p tsconfig-esm.json",
+    "build:test": "ngc -p tsconfig-test.json",
     "build:umd": "ngc",
     "changelog": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0",
     "commit": "git-cz",
     "clean": "rimraf ./dist",
-    "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json --force",
-    "nightly": "npm run build:lint && node ./scripts/publish-nightly",
+    "cover": "nyc npm test",
+    "doc": "typedoc --tsconfig tsconfig-esm.json --options typedoc.json src/",
+    "jasmine": "jasmine JASMINE_CONFIG_PATH=test/jasmine-config.json",
+    "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json",
+    "nightly": "npm run build:lint && node ./scripts/nightly",
     "prepush": "npm run lint",
-    "package:json": "node ./scripts/package-json",
-    "publishPackage": "npm run build:lint && npm run package:json --prepare && npm publish --access public && npm run package:json --restore"
+    "package:json": "node ./scripts/package",
+    "publishPackage": "npm run build:qa && npm run package:json --prepare && npm publish --access public && npm run package:json --restore",
+    "test": "npm run clean && npm run build:test && npm run jasmine"
   },
   "files": [
     "dist/",
