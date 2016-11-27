@@ -1,10 +1,10 @@
-import { ConfigModule, Config } from '@ramonornela/configuration';
+import { ConfigurationModule, Config } from '@ramonornela/configuration';
 import { NgModule } from '@angular/core';
 import { Resolve, Request, Metadata, MetadataBase } from './providers';
 
 @NgModule({
   imports: [
-    ConfigModule
+    ConfigurationModule
   ],
   providers: [
     Resolve,
