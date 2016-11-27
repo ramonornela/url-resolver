@@ -18,7 +18,7 @@
     "doc": "typedoc --tsconfig tsconfig-esm.json --options typedoc.json src/",
     "jasmine": "jasmine JASMINE_CONFIG_PATH=test/jasmine-config.json",
     "lint": "tslint -c ./tslint.json --project ./tsconfig-esm.json",
-    "nightly": "npm run build:lint && node ./scripts/nightly",
+    "nightly": "npm run build:qa && node ./scripts/nightly",
     "prepush": "npm run lint",
     "package:json": "node ./scripts/package",
     "publishPackage": "npm run build:qa && npm run package:json --prepare && npm publish --access public && npm run package:json --restore",
