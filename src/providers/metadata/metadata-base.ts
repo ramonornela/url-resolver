@@ -1,4 +1,4 @@
-import { Inject, OpaqueToken, Optional } from '@angular/core';
+import { Inject, Injectable, OpaqueToken, Optional } from '@angular/core';
 import { HTTP_METHODS, Params } from './data-type';
 import { Metadata } from './metadata';
 import { Config } from '@ramonornela/configuration';
@@ -9,6 +9,7 @@ const KEY_CONFIG = 'urlResolver';
 
 export const ConfigRoutesToken = new OpaqueToken('CONFIGROUTESTOKEN');
 
+@Injectable()
 export class MetadataBase implements Metadata {
 
   protected data: any = {};
