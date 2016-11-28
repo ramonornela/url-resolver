@@ -11,7 +11,7 @@ export const ConfigRoutesToken = new OpaqueToken('CONFIGROUTESTOKEN');
 
 export class MetadataBase implements Metadata {
 
-  data: any = {};
+  protected data: any = {};
 
   constructor(@Optional() config: Config, @Optional() @Inject(ConfigRoutesToken) configData: Object) {
     if (typeof config === 'object' && config !== null) {
