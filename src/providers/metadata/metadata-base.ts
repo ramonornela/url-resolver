@@ -1,3 +1,4 @@
+import { Inject, OpaqueToken, Optional } from '@angular/core';
 import { HTTP_METHODS, Params } from './data-type';
 import { Metadata } from './metadata';
 import { Config } from '@ramonornela/configuration';
@@ -6,20 +7,24 @@ const KEY_DEFAULTS = '_defaults';
 
 const KEY_CONFIG = 'urlResolver';
 
+export const ConfigRoutesToken = new OpaqueToken('CONFIGROUTESTOKEN');
+
 export class MetadataBase implements Metadata {
 
-  protected data: any;
+  data: any = {};
 
-  constructor(private config: Config) {
-    this.data = this.getData();
-  }
-
-  protected getData(): any {
-    if (this.data === undefined || this.data === null) {
-      this.data = this.config.get(KEY_CONFIG);
+  constructor(@Optional() config: Config, @Optional() @Inject(ConfigRoutesToken) configData: Object) {
+    if (typeof config === 'object' && config !== null) {
+      this.data = config.get(KEY_CONFIG);
     }
 
-    return this.data;
+    if (configData) {
+      this.data = configData;
+    }
+
+    if (this.data !== 'object' && this.data === null) {
+      throw new Error('Invalid data type routes');
+    }
   }
 
   protected _set(id: string, key: string, value: any) {
