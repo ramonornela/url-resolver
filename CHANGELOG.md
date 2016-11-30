@@ -1,3 +1,18 @@
+<a name="0.0.22"></a>
+## [0.0.22](https://github.com/ramonornela/url-resolver/compare/v0.0.21...v0.0.22) (2016-11-30)
+
+
+### Bug Fixes
+
+* **metadata:** fix ngc add MetadataBase how injectable ([8a86fe7](https://github.com/ramonornela/url-resolver/commit/8a86fe7))
+
+
+### Features
+
+* **module:** adjust to ConfigurationModule be optional ([5cf8469](https://github.com/ramonornela/url-resolver/commit/5cf8469))
+
+
+
 <a name="0.0.21"></a>
 ## [0.0.21](https://github.com/ramonornela/url-resolver/compare/v0.0.20...v0.0.21) (2016-11-27)
 
@@ -8,6 +23,8 @@
 * **metadata:** typo ([66f05b6](https://github.com/ramonornela/url-resolver/commit/66f05b6))
 * **metadata:** typo metadata ([9391b06](https://github.com/ramonornela/url-resolver/commit/9391b06))
 * **module:** import providers ([05e73ec](https://github.com/ramonornela/url-resolver/commit/05e73ec))
+* **package:** fix peerDeps configuration 0.0.9 ([ff9a7ae](https://github.com/ramonornela/url-resolver/commit/ff9a7ae))
+* **package:** peerDeps configuration ([be79c7b](https://github.com/ramonornela/url-resolver/commit/be79c7b))
 * **providers:** export MetadataBase ([f2042e0](https://github.com/ramonornela/url-resolver/commit/f2042e0))
 * **providers:** exports all providers ([db8f248](https://github.com/ramonornela/url-resolver/commit/db8f248))
 * **resolve:** regex params optionals ([cbea3b7](https://github.com/ramonornela/url-resolver/commit/cbea3b7))
