@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Request as RequestAngular, Headers, URLSearchParams } from '@angular/http';
 import { Resolve } from './resolve';
+import { Metadata } from './metadata/metadata';
 
 /**
  *
@@ -10,7 +11,15 @@ export class Request {
 
   protected defaultOptions: any = {};
 
-  constructor(public resolve: Resolve) {}
+  constructor(protected resolve: Resolve) {}
+
+  getResolve(): Resolve {
+    return this.resolve;
+  }
+
+  getMetadata(): Metadata  {
+    return this.getResolve().getMetadata();
+  }
 
   create(id: string, params?: Object, options: any = {}): RequestAngular {
     let defaultOptions = Object.assign({}, this.defaultOptions);
@@ -18,7 +27,7 @@ export class Request {
 
     // merge headers
     options.headers = options.headers || {};
-    let headersDefault = this.resolve.metadata.getHeaders(id);
+    let headersDefault = this.getMetadata().getHeaders(id);
     for (let index in options.headers) {
       headersDefault[index] = options.headers[index];
     }
@@ -26,7 +35,7 @@ export class Request {
     let copyParams = Object.assign({}, params);
 
     Object.assign(options, {
-      method: options.method || this.resolve.metadata.getMethod(id),
+      method: options.method || this.getMetadata().getMethod(id),
       url: this.resolve.url(id, copyParams),
       headers: new Headers(headersDefault)
     });

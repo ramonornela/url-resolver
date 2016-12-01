@@ -8,7 +8,11 @@ export class Resolve {
 
   private suffixVariable: string = '}';
 
-  constructor(public metadata: Metadata) {}
+  constructor(protected metadata: Metadata) {}
+
+  getMetadata() {
+    return this.metadata;
+  }
 
   setPreffixVariable(preffix: string): this {
     this.preffixVariable = preffix;
