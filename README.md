@@ -9,25 +9,23 @@ import { NgModule } from '@angular/core';
 import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 
-// import url-resolver
+// import url-resolver module
 import { UrlResolverModule } from '@ramonornela/url-resolver';
 
-export const APP_CONFIG = {
-  'urlResolver': {
-    '_defaults': {
-      'host': 'http://api.example.com/'
+export const APP_ROUTE = {
+  '_defaults': {
+    'host': 'http://api.example.com/'
+  },
+  'user': {
+    'url': 'user/{id}',
+    'method': 'GET',
+    'headers': {
+      'content-type': 'application/json'
     },
-    'user': {
-      'url': 'user/{id}',
-      'method': 'GET',
-      'headers': {
-        'content-type': 'application/json'
-      },
-      'params': {
-        'id': {
-          'type': 'number',
-          'required': true
-        }
+    'params': {
+      'id': {
+        'type': 'number',
+        'required': true
       }
     }
   }
@@ -39,7 +37,7 @@ export const APP_CONFIG = {
   ],
   imports: [
     IonicModule.forRoot(MyApp),
-    UrlResolverModule.initialize(APP_CONFIG),
+    UrlResolverModule.initialize(APP_ROUTE),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
