@@ -1,3 +1,19 @@
+<a name="0.0.23"></a>
+## [0.0.23](https://github.com/ramonornela/url-resolver/compare/v0.0.22...v0.0.23) (2016-12-02)
+
+
+### Bug Fixes
+
+* **build:** fix build webpack ionic ([99be9bb](https://github.com/ramonornela/url-resolver/commit/99be9bb))
+* **module:** problem compile webpack ionic2 ([6234577](https://github.com/ramonornela/url-resolver/commit/6234577))
+
+
+### Features
+
+* **resolve:** improvements API ([ec6cf93](https://github.com/ramonornela/url-resolver/commit/ec6cf93))
+
+
+
 <a name="0.0.22"></a>
 ## [0.0.22](https://github.com/ramonornela/url-resolver/compare/v0.0.21...v0.0.22) (2016-11-30)
 
