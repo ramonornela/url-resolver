@@ -8,11 +8,11 @@ import { ConfigRoutesToken, Metadata, MetadataBase, Request, Resolve } from './p
   ]
 })
 export class UrlResolverModule {
-  static initialize(data?: Object): ModuleWithProviders {
+  static initialize(data?: any): ModuleWithProviders {
     return {
       ngModule: UrlResolverModule,
       providers: [
-        { provide: ConfigRoutesToken, useValue: data },
+        { provide: ConfigRoutesToken, useValue: data || null },
         { provide: Metadata, useClass: MetadataBase }
       ]
     };
