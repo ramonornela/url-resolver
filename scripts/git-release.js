@@ -15,21 +15,31 @@ github.authenticate({
   token: token || process.env.GH_TOKEN
 });
 
-
-return changelog({
-  preset: 'angular'
-})
-.pipe(through.obj(function(file) {
+function publish(body) {
   github.releases.createRelease({
     owner: 'ramonornela',
-    repo: 'configuration',
+    repo: 'url-resolver',
     target_commitish: 'master',
     tag_name: 'v' + packageJSON.version,
     name: packageJSON.version,
-    body: file.toString(),
+    body: body,
     prerelease: false
   }, function(err, data) {
     if (err) console.log('error: ' + err);
     console.log(data);
   });
+}
+
+var generating = false;
+
+changelog({
+  preset: 'angular'
+})
+.pipe(through.obj(function(file) {
+  generating = true;
+  publish(file.toString());
 }));
+
+if (!generating) {
+  publish();
+}
