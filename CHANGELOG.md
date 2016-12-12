@@ -1,3 +1,6 @@
+<a name="0.0.24"></a>
+## [0.0.24](https://github.com/ramonornela/url-resolver/compare/v0.0.23...v0.0.24) (2016-12-12)
+
 <a name="0.0.23"></a>
 ## [0.0.23](https://github.com/ramonornela/url-resolver/compare/v0.0.22...v0.0.23) (2016-12-02)
 
