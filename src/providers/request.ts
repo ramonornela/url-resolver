@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Request as RequestAngular, Headers, URLSearchParams } from '@angular/http';
-import { Resolve } from './resolve';
+import { Headers, Request as RequestAngular, URLSearchParams } from '@angular/http';
 import { Metadata } from './metadata/metadata';
+import { Resolve } from './resolve';
 
 /**
  *

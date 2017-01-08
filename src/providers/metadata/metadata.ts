@@ -1,5 +1,5 @@
-import { Params, HTTP_METHODS } from './data-type';
 import { Injectable } from '@angular/core';
+import { HTTP_METHODS, Params } from './data-type';
 
 @Injectable()
 export abstract class Metadata {
