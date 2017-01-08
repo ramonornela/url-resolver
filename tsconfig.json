@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "module": "umd",
+    "noUnusedParameters": true,
+    "noUnusedLocals": true,
     "target": "es5",
     "experimentalDecorators": true,
     "sourceMap": true,
