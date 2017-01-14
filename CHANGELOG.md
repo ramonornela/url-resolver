@@ -1,3 +1,8 @@
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/mbamobi/url-resolver/compare/v0.0.24...v1.0.0) (2017-01-14)
+
+
+
 <a name="0.0.24"></a>
 ## [0.0.24](https://github.com/ramonornela/url-resolver/compare/v0.0.23...v0.0.24) (2016-12-12)
 
