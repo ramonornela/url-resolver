@@ -1,6 +1,6 @@
 {
   "name": "@mbamobi/url-resolver",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Configuration routes to object Http of the Angular2",
   "main": "dist/umd/index.js",
   "typings": "dist/esm/index.d.ts",
