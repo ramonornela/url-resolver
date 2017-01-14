@@ -1,6 +1,6 @@
 {
-  "name": "@ramonornela/url-resolver",
-  "version": "0.0.24",
+  "name": "@mbamobi/url-resolver",
+  "version": "1.0.0",
   "description": "Configuration routes to object Http of the Angular2",
   "main": "dist/umd/index.js",
   "typings": "dist/esm/index.d.ts",
@@ -31,15 +31,13 @@
     "README.md",
     "CHANGELOG.md"
   ],
-  "dependencies": {
-    "@angular/core": "2.1.2",
-    "@angular/http": "2.1.2",
-    "@ramonornela/configuration": "^0.0.13"
-  },
   "devDependencies": {
-    "@angular/compiler": "~2.1.0",
-    "@angular/compiler-cli": "~2.1.0",
-    "@angular/platform-browser-dynamic": "~2.1.0",
+    "@angular/compiler": "2.2.1",
+    "@angular/compiler-cli": "2.2.1",
+    "@angular/core": "2.2.1",
+    "@angular/http": "2.2.1",
+    "@angular/platform-browser-dynamic": "2.2.1",
+    "@mbamobi/configuration": "^1.0.0",
     "@types/jasmine": "2.2.33",
     "codelyzer": "2.0.0-beta.4",
     "commitizen": "^2.8.6",
@@ -63,13 +61,13 @@
   "peerDependencies": {
     "@angular/core": "^2.0.0",
     "@angular/http": "^2.0.0",
-    "@ramonornela/configuration": "^0.0.13",
+    "@mbamobi/configuration": "^1.0.0",
     "rxjs": "5.0.0-beta.12",
     "zone.js": "^0.6.21"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ramonornela/url-resolver.git"
+    "url": "git+https://github.com/mbamobi/url-resolver.git"
   },
   "keywords": [
     "ionic",
@@ -84,7 +82,7 @@
   "author": "Ramon Ornelas <ramon.ornela@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ramonornela/url-resolver/issues"
+    "url": "https://github.com/mbamobi/url-resolver/issues"
   },
-  "homepage": "https://github.com/ramonornela/url-resolver"
+  "homepage": "https://github.com/mbamobi/url-resolver"
 }
