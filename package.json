@@ -1,6 +1,6 @@
 {
   "name": "@mbamobi/url-resolver",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Configuration routes to object Http of the Angular2",
   "main": "dist/umd/index.js",
   "typings": "dist/esm/index.d.ts",
@@ -32,12 +32,12 @@
     "CHANGELOG.md"
   ],
   "devDependencies": {
-    "@angular/compiler": "2.2.1",
-    "@angular/compiler-cli": "2.2.1",
-    "@angular/core": "2.2.1",
-    "@angular/http": "2.2.1",
-    "@angular/platform-browser-dynamic": "2.2.1",
-    "@mbamobi/configuration": "^1.0.0",
+    "@angular/compiler": "2.4.8",
+    "@angular/compiler-cli": "2.4.8",
+    "@angular/core": "2.4.8",
+    "@angular/http": "2.4.8",
+    "@angular/platform-browser-dynamic": "2.4.8",
+    "@mbamobi/configuration": "^2.0.0",
     "@types/jasmine": "2.2.33",
     "codelyzer": "2.0.0-beta.4",
     "commitizen": "^2.8.6",
@@ -50,20 +50,20 @@
     "nyc": "10.0.0",
     "reflect-metadata": "0.1.8",
     "rimraf": "^2.5.4",
-    "rxjs": "5.0.0-beta.12",
+    "rxjs": "5.0.1",
     "tslint": "4.3.1",
     "tslint-eslint-rules": "3.2.3",
     "tslint-ionic-rules": "0.0.8",
     "typedoc": "^0.5.1",
     "typescript": "2.0.9",
-    "zone.js": "^0.6.21"
+    "zone.js": "^0.7.2"
   },
   "peerDependencies": {
-    "@angular/core": "^2.0.0",
-    "@angular/http": "^2.0.0",
-    "@mbamobi/configuration": "^1.0.0",
-    "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.21"
+    "@angular/core": "^2.4.8",
+    "@angular/http": "^2.4.8",
+    "@mbamobi/configuration": "^2.0.0",
+    "rxjs": "5.0.1",
+    "zone.js": "^0.7.2"
   },
   "repository": {
     "type": "git",
