@@ -1,3 +1,53 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/mbamobi/url-resolver/compare/v1.1.0...v2.0.0) (2017-04-04)
+
+
+
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/mbamobi/url-resolver/compare/v1.0.1...v1.1.0) (2017-04-04)
+
+
+### Bug Fixes
+
+* **build:** variable not used ([2bc5311](https://github.com/mbamobi/url-resolver/commit/2bc5311))
+
+
+### Features
+
+* **request:** implements getDefaultOptions() ([6a54273](https://github.com/mbamobi/url-resolver/commit/6a54273))
+
+
+
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/mbamobi/url-resolver/compare/v1.0.1...v1.1.0) (2017-04-04)
+
+
+### Bug Fixes
+
+* **build:** variable not used ([2bc5311](https://github.com/mbamobi/url-resolver/commit/2bc5311))
+
+
+### Features
+
+* **request:** implements getDefaultOptions() ([6a54273](https://github.com/mbamobi/url-resolver/commit/6a54273))
+
+
+
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/mbamobi/url-resolver/compare/v1.0.0...v1.0.1) (2017-01-14)
+
+
+### Bug Fixes
+
+* **build:** variable not used ([2bc5311](https://github.com/mbamobi/url-resolver/commit/2bc5311))
+
+
+
+<a name="1.0.0"></a>
+# [1.0.0](https://github.com/mbamobi/url-resolver/compare/v0.0.24...v1.0.0) (2017-01-14)
+
+
+
 <a name="0.0.24"></a>
 ## [0.0.24](https://github.com/ramonornela/url-resolver/compare/v0.0.23...v0.0.24) (2016-12-12)
 

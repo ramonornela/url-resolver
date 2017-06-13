@@ -1,5 +1,5 @@
 import { Inject, Injectable, OpaqueToken, Optional } from '@angular/core';
-import { Config } from '@ramonornela/configuration';
+import { Config } from '@mbamobi/configuration';
 import { HTTP_METHODS, Params } from './data-type';
 import { Metadata } from './metadata';
 

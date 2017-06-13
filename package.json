@@ -1,6 +1,6 @@
 {
-  "name": "@ramonornela/url-resolver",
-  "version": "0.0.24",
+  "name": "@mbamobi/url-resolver",
+  "version": "2.0.0",
   "description": "Configuration routes to object Http of the Angular2",
   "main": "dist/umd/index.js",
   "typings": "dist/esm/index.d.ts",
@@ -31,15 +31,13 @@
     "README.md",
     "CHANGELOG.md"
   ],
-  "dependencies": {
-    "@angular/core": "2.1.2",
-    "@angular/http": "2.1.2",
-    "@ramonornela/configuration": "^0.0.13"
-  },
   "devDependencies": {
-    "@angular/compiler": "~2.1.0",
-    "@angular/compiler-cli": "~2.1.0",
-    "@angular/platform-browser-dynamic": "~2.1.0",
+    "@angular/compiler": "4.0.0",
+    "@angular/compiler-cli": "4.0.0",
+    "@angular/core": "4.0.0",
+    "@angular/http": "4.0.0",
+    "@angular/platform-browser-dynamic": "4.0.0",
+    "@mbamobi/configuration": "^3.0.0",
     "@types/jasmine": "2.2.33",
     "codelyzer": "2.0.0-beta.4",
     "commitizen": "^2.8.6",
@@ -52,24 +50,24 @@
     "nyc": "10.0.0",
     "reflect-metadata": "0.1.8",
     "rimraf": "^2.5.4",
-    "rxjs": "5.0.0-beta.12",
+    "rxjs": "5.1.1",
     "tslint": "4.3.1",
     "tslint-eslint-rules": "3.2.3",
     "tslint-ionic-rules": "0.0.8",
     "typedoc": "^0.5.1",
-    "typescript": "2.0.9",
-    "zone.js": "^0.6.21"
+    "typescript": "~2.2.1",
+    "zone.js": "^0.8.4"
   },
   "peerDependencies": {
-    "@angular/core": "^2.0.0",
-    "@angular/http": "^2.0.0",
-    "@ramonornela/configuration": "^0.0.13",
-    "rxjs": "5.0.0-beta.12",
-    "zone.js": "^0.6.21"
+    "@angular/core": "^4.0.0",
+    "@angular/http": "^4.0.0",
+    "@mbamobi/configuration": "^3.0.0",
+    "rxjs": "5.1.1",
+    "zone.js": "^0.8.4"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ramonornela/url-resolver.git"
+    "url": "git+https://github.com/mbamobi/url-resolver.git"
   },
   "keywords": [
     "ionic",
@@ -84,7 +82,7 @@
   "author": "Ramon Ornelas <ramon.ornela@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/ramonornela/url-resolver/issues"
+    "url": "https://github.com/mbamobi/url-resolver/issues"
   },
-  "homepage": "https://github.com/ramonornela/url-resolver"
+  "homepage": "https://github.com/mbamobi/url-resolver"
 }

@@ -10,7 +10,7 @@ import { IonicApp, IonicModule } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 // import url-resolver module
-import { UrlResolverModule } from '@ramonornela/url-resolver';
+import { UrlResolverModule } from '@mbamobi/url-resolver';
 
 export const APP_ROUTE = {
   '_defaults': {
@@ -49,4 +49,4 @@ export class AppModule {}
 
 Contributing
 
-See [CONTRIBUTING.md](https://github.com/ramonornela/url-resolver/blob/master/.github/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/mbamobi/url-resolver/blob/master/.github/CONTRIBUTING.md)

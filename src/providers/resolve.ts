@@ -127,7 +127,7 @@ export class Resolve {
     this._validateParams(this.metadata.getParams(id), params, onlyAssign);
   }
 
-  private _validateParams(paramsIds: any, params: Object, onlyAssign?: boolean, id?: string) {
+  private _validateParams(paramsIds: any, params: Object, onlyAssign?: boolean) {
     for (let param in paramsIds) {
       // skip parameters is not present in object
       if (onlyAssign && !(param in params)) {

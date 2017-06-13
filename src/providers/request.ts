@@ -47,8 +47,13 @@ export class Request {
     return new RequestAngular(options);
   }
 
-  setDefaultOptions(options: any) {
+  setDefaultOptions(options: any): this {
     this.defaultOptions = options;
+    return this;
+  }
+
+  getDefaultOptions() {
+    return this.defaultOptions;
   }
 
   protected serializeParams(id: string, options: any, params: Object) {
